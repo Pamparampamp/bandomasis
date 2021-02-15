@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::middleware(['auth'])->group(function(){
+Route::resource('betters', App\Http\Controllers\BetterController::class);
+Route::resource('horses', App\Http\Controllers\HorseController::class);
+Route::get('horses/{id}/travel', [App\Http\Controllers\HorseController::class, 'travel'])->name('horses.travel');
+Route::get('betters/{id}/info', [App\Http\Controllers\BetterController::class, 'info'])->name('betters.info');
+});
+
 
 Auth::routes();
 

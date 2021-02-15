@@ -32,9 +32,17 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                      @auth  <ul class="navbar-nav mr-auto">
 
-                    </ul>
+<li class="nav-item">
+<a href="{{ route('betters.index') }}" class="nav-link">Statytojai</a>
+</li>
+<li class="nav-item">
+<a href="{{ route('horses.index') }}" class="nav-link">Arkliai</a>
+</li>
+
+
+</ul>@endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -45,7 +53,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -75,9 +83,15 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+     <main class="container">
+@yield('content')
+</main>
     </div>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+tinymce.init({
+selector: '#mce'
+});
+</script>
 </body>
 </html>
